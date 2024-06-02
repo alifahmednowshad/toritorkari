@@ -83,7 +83,6 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: "/toritorkari" }
 );
 
 export default router;

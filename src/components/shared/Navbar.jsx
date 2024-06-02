@@ -61,16 +61,16 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-base">
-            <li>
+            <li className="mr-1">
               <Link to={"/"}>Home</Link>
             </li>
-            <li>
+            <li className="mr-1">
               <Link to={"/shop"}>Shop</Link>
             </li>
-            <li>
+            <li className="mr-1">
               <Link to={"/about"}>About</Link>
             </li>
-            <li>
+            <li className="mr-1">
               <Link to={"/blog"}>Blog</Link>
             </li>
             <li>
