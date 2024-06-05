@@ -36,7 +36,7 @@ const Sidebar = () => {
           Add Product
         </Link>
         <Link
-          to="/dashboard/manageProduct"
+          to="/dashboard/allManageProduct"
           className="p-2 mt-2 hover:bg-gray-700 rounded"
         >
           Manage Product

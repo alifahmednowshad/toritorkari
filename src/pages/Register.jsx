@@ -12,9 +12,10 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    createUser(email, password);
+    createUser(name, email, password); 
     if (user) {
       navigate(from);
     }
@@ -33,6 +34,18 @@ const Register = () => {
         </div>
         <div className=" card shadow-2xl bg-base-100 max-w-lg">
           <form onSubmit={handleSubmit} className="card-body  ">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>{" "}
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>

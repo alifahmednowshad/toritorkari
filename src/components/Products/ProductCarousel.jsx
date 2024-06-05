@@ -8,8 +8,23 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
 
 const ProductCarousel = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/product")
+      .then((res) => res.json())
+      .then((data) => {
+        // Shuffle the array
+        const shuffled = data.sort(() => 0.5 - Math.random());
+        // Get the first 8 items
+        const selected = shuffled.slice(0, 8);
+        setProducts(selected);
+      });
+  }, []);
+
   return (
     <div className="container mx-auto my-10">
       <Swiper
@@ -17,9 +32,6 @@ const ProductCarousel = () => {
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
@@ -43,26 +55,25 @@ const ProductCarousel = () => {
           },
         }}
       >
-        {Array(8)
-          .fill(0)
-          .map((_, index) => (
-            <SwiperSlide key={index}>
-              <div className="card w-full bg-base-100 shadow relative">
-                <div
-                  className="h-64 md:h-72 lg:h-96 rounded bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://preview.colorlib.com/theme/ogani/img/categories/cat-5.jpg.webp')",
-                  }}
-                ></div>
-                <div className="absolute bottom-0 w-full flex justify-center">
-                  <div className="bg-white bg-opacity-75 p-4 w-10/12 mb-4 text-center rounded-b-lg">
-                    <p className="font-bold text-lg uppercase">Drink Fruits</p>
-                  </div>
+        {products.map((product) => (
+          <SwiperSlide key={product._id} product={product}>
+            <div className="card w-full bg-base-100 shadow relative">
+              <div
+                className="h-64 md:h-72 lg:h-96 rounded bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${product.image_url})`,
+                }}
+              ></div>
+              <div className="absolute bottom-0 w-full flex justify-center">
+                <div className="bg-white bg-opacity-75 p-4 w-10/12 mb-4 text-center rounded-b-lg">
+                  <p className="font-bold text-lg uppercase">
+                    {product.category}
+                  </p>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

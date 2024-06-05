@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
@@ -10,22 +12,40 @@ const GoogleLogin = () => {
 
   const handleSubmit = () => {
     googleLogin()
-      .then(() => {
-        console.log("Google login success");
-        navigate(from);
+      .then((data) => {
+        if (data?.user?.email) {
+          const userInfo = {
+            email: data?.user?.email,
+            name: data?.user?.displayName,
+          };
+          axios
+            .post("http://localhost:5000/user", userInfo, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+            .then((res) => {
+              localStorage.setItem("token", res.data.token);
+              console.log("Google login success");
+              navigate(from);
+            })
+            .catch((error) => {
+              console.error("Error logging in with Google:", error);
+            });
+        }
       })
       .catch((error) => {
-        console.error("Error signing in:", error);
+        console.error("Error signing in with Google:", error);
       });
   };
 
   return (
     <div>
-      <button
-        onClick={handleSubmit}
-        className="px-5 py-3 bg-yellow-500 text-white w-full rounded-lg"
-      >
-        Google Login
+      <button onClick={handleSubmit} className="btn w-full">
+        <div className="flex items-center gap-2">
+          <FcGoogle size={24} />
+          <p>Google</p>
+        </div>
       </button>
     </div>
   );

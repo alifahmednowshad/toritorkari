@@ -13,11 +13,10 @@ import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/dashboard/Profile";
 import AddProduct from "../pages/dashboard/AddProduct";
-import ManageProduct from "../pages/dashboard/ManageProduct";
 import ProductDetails from "../components/Products/ProductDetails";
-
-
-
+import Details from "../components/Dashboard/Product/Details";
+import AllManageProduct from "../pages/dashboard/AllManageProduct";
+import UpdateProduct from "../pages/dashboard/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetails />
+        element: <ProductDetails />,
       },
       {
         path: "/about",
@@ -80,9 +79,18 @@ const router = createBrowserRouter([
         path: "addProduct",
         element: <AddProduct />,
       },
+
       {
-        path: "manageProduct",
-        element: <ManageProduct />,
+        path: "allManageProduct",
+        element: <AllManageProduct />,
+      },
+      {
+        path: "allManageProduct/details/:id",
+        element: <Details />,
+      },
+      {
+        path: "allManageProduct/update/:id",
+        element: <UpdateProduct />,
       },
     ],
   },

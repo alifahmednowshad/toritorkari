@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+  const token = localStorage.getItem("token");
   const [product, setProduct] = useState({
     name: "",
     price: 0,
@@ -11,9 +13,26 @@ const AddProduct = () => {
     rating: 0,
     category: "",
   });
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  
-  const token = localStorage.getItem("token");
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`http://localhost:5000/product/${id}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        toast.error("Error fetching product");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,155 +90,151 @@ const AddProduct = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/product", product, {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      toast.success("Product added successfully");
-      setProduct({
-        name: "",
-        price: 0,
-        description: "",
-        image_url: "",
-        rating: 0,
-        category: "",
-      });
-      setErrors({});
+      await axios.patch(
+        `http://localhost:5000/product/${product._id}`,
+        product,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("Product updated successfully");
     } catch (error) {
-      console.error("Error adding product:", error);
-      toast.error("Error adding product");
+      console.error("Error updating product:", error);
+      toast.error("Error updating product");
     }
   };
 
   return (
     <div className="w-8/12 mx-auto p-4 my-5">
-      <h1 className="text-2xl font-bold mb-4">Add a Product</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">Update Product</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+      <form onSubmit={handleSubmit} className="space-y-4 ">
+        <div>
           <label htmlFor="name" className="block mb-2">
             Name:
           </label>
           <input
-            id="name"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="text"
+            id="name"
             name="name"
-            placeholder="Name"
             value={product.name}
             onChange={handleChange}
+            placeholder="Name"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.name ? "border-red-500" : ""
+            }`}
             required
           />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-          )}
+          {errors.name && <p className="text-red-500">{errors.name}</p>}
         </div>
-        <div className="mb-4">
+        <div>
           <label htmlFor="price" className="block mb-2">
             Price:
           </label>
           <input
-            id="price"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="number"
+            id="price"
             name="price"
-            placeholder="Price"
             value={product.price}
             onChange={handleChange}
+            placeholder="Price"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.price ? "border-red-500" : ""
+            }`}
             required
           />
-          {errors.price && (
-            <p className="text-red-500 text-sm mt-1">{errors.price}</p>
-          )}
+          {errors.price && <p className="text-red-500">{errors.price}</p>}
         </div>
-        <div className="mb-4">
+        <div>
           <label htmlFor="description" className="block mb-2">
             Description:
           </label>
           <input
-            id="description"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="text"
+            id="description"
             name="description"
-            placeholder="Description"
             value={product.description}
             onChange={handleChange}
+            placeholder="Description"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.description ? "border-red-500" : ""
+            }`}
             required
           />
           {errors.description && (
-            <p className="text-red-500 text-sm mt-1">{errors.description}</p>
+            <p className="text-red-500">{errors.description}</p>
           )}
         </div>
-        <div className="mb-4">
+        <div>
           <label htmlFor="image_url" className="block mb-2">
             Image URL:
           </label>
           <input
-            id="image_url"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="text"
+            id="image_url"
             name="image_url"
-            placeholder="Image URL"
             value={product.image_url}
             onChange={handleChange}
+            placeholder="Image URL"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.image_url ? "border-red-500" : ""
+            }`}
             required
           />
           {errors.image_url && (
-            <p className="text-red-500 text-sm mt-1">{errors.image_url}</p>
+            <p className="text-red-500">{errors.image_url}</p>
           )}
         </div>
-        <div className="mb-4">
+        <div>
           <label htmlFor="rating" className="block mb-2">
             Rating:
           </label>
           <input
-            id="rating"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="number"
+            id="rating"
             name="rating"
-            placeholder="Rating"
             value={product.rating}
             onChange={handleChange}
-            step="0.1"
-            min="0"
-            max="5"
+            placeholder="Rating"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.rating ? "border-red-500" : ""
+            }`}
             required
           />
-          {errors.rating && (
-            <p className="text-red-500 text-sm mt-1">{errors.rating}</p>
-          )}
+          {errors.rating && <p className="text-red-500">{errors.rating}</p>}
         </div>
-        <div className="mb-4">
+        <div>
           <label htmlFor="category" className="block mb-2">
             Category:
           </label>
           <input
-            id="category"
-            className="bg-gray-100 p-2 w-full border border-black rounded-lg"
             type="text"
+            id="category"
             name="category"
-            placeholder="Category"
             value={product.category}
             onChange={handleChange}
+            placeholder="Category"
+            className={`input bg-gray-100 p-5 w-full border border-black rounded-lg mt-3 ${
+              errors.category ? "border-red-500" : ""
+            }`}
             required
           />
-          {errors.category && (
-            <p className="text-red-500 text-sm mt-1">{errors.category}</p>
-          )}
+          {errors.category && <p className="text-red-500">{errors.category}</p>}
         </div>
-
         <button
-          className="btn mt-4 w-full bg-red-500 text-white p-2"
           type="submit"
+          className="btn bg-red-500 text-white p-3 rounded-lg block w-full uppercase tracking-wide font-semibold transition duration-300 ease-in-out hover:bg-red-600"
+          disabled={loading}
         >
-          Add Product
+          {loading ? "Updating..." : "Update Product"}
         </button>
       </form>
-      <Toaster />
+      <Toaster position="bottom-right" />
     </div>
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

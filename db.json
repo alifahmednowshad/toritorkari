@@ -1,58 +1,138 @@
 [
   {
-    "id": 6,
     "name": "Fresh Chicken Breast",
     "price": 9.99,
-    "image": "https://example.com/images/chicken-breast.jpg",
+    "description": "Premium quality chicken breast, perfect for grilling, baking, or stir-frying. Our chicken breasts are carefully selected and trimmed to ensure maximum tenderness and flavor. Whether you're making a healthy salad, a hearty stew, or a simple grilled chicken sandwich, our fresh chicken breasts are sure to please.",
+    "image_url": "https://www.google.com/imgres?q=fresh%20chicken%20breast&imgurl=https%3A%2F%2Fwww.bigsams.in%2Fwp-content%2Fuploads%2F2022%2F05%2FChicken-breast-boneless-image-1.jpg&imgrefurl=https%3A%2F%2Fwww.bigsams.in%2Fproduct%2Ffresh-chicken-breast-boneless-500g%2F&docid=BC4B0JYbqiw4yM&tbnid=pgDx4ZOyAefEtM&vet=12ahUKEwjwr7nQ4cOGAxV7h1YBHTnbIewQM3oECG4QAA..i&w=580&h=576&hcb=2&ved=2ahUKEwjwr7nQ4cOGAxV7h1YBHTnbIewQM3oECG4QAA",
     "rating": 4.9,
     "category": "Fresh Meat"
   },
   {
-    "id": 7,
+    "name": "Fresh Ground Beef",
+    "price": 7.49,
+    "description": "High-quality ground beef, perfect for making burgers, meatballs, or meat sauces. Our ground beef is freshly ground from lean cuts of beef, ensuring rich flavor and juiciness in every bite. Versatile and easy to cook, it's a staple ingredient for many classic dishes. Whether you're grilling up juicy burgers for a summer barbecue or simmering a hearty Bolognese sauce, our fresh ground beef delivers unbeatable taste.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGJBCZBYyAwsQMX5DUjPhgBsJSdJWZV5_F1Q&s",
+    "rating": 4.7,
+    "category": "Fresh Meat"
+  },
+  {
+    "name": "Fresh Turkey",
+    "price": 12.99,
+    "description": "Juicy and tender whole turkey, perfect for roasting and serving as the centerpiece of your meal. Our fresh turkeys are raised on small family farms and are never given antibiotics or hormones. With its succulent meat and crispy golden skin, our fresh turkey is sure to impress your family and guests. Whether you're celebrating Thanksgiving or simply enjoying a special dinner, our fresh turkey is the perfect choice.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp126I_UO0iK5sAN2iZHkEk560QepkXF3eSg&s",
+    "rating": 4.8,
+    "category": "Fresh Meat"
+  },
+  {
+    "name": "Premium Pork Chops",
+    "price": 10.99,
+    "description": "Thick-cut pork chops, tender and flavorful, ideal for grilling, baking, or pan-searing. Our premium pork chops are hand-selected and trimmed to perfection, ensuring each chop is juicy and delicious. Whether you're marinating and grilling them to perfection or simmering them in a savory sauce, our premium pork chops are sure to satisfy your cravings for pork perfection.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBG2tBs8bJAbM912qmFVOXz7gQ71hhteTAFQ&s",
+    "rating": 4.6,
+    "category": "Fresh Meat"
+  },
+  {
     "name": "Organic Carrots",
     "price": 3.49,
-    "image": "https://example.com/images/carrots.jpg",
+    "description": "Certified organic carrots, packed with nutrients and great for snacking or cooking. Our organic carrots are grown using sustainable farming practices, ensuring they're free from synthetic pesticides and chemicals. With their vibrant color and sweet flavor, our organic carrots are perfect for adding crunch to salads, sweetness to soups, or nutrition to your favorite dishes.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOhw2a6lnU9sCTxLeeXJCDJAzGZJKq_KHp2A&s",
     "rating": 4.5,
     "category": "Vegetables"
   },
   {
-    "id": 8,
+    "name": "Fresh Spinach",
+    "price": 2.99,
+    "description": "Organic spinach leaves, great for salads, sandwiches, or cooking. Our fresh spinach is harvested at the peak of ripeness, ensuring maximum flavor and nutrition. Whether you're tossing it in a salad, layering it in a sandwich, or wilting it into a creamy pasta sauce, our fresh spinach adds a burst of vibrant green color and wholesome goodness to any dish.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvBiUE7lcN_SxKwAXh9p746nVCGKMpQueF6A&s",
+    "rating": 4.6,
+    "category": "Vegetables"
+  },
+  {
+    "name": "Ripe Tomatoes",
+    "price": 4.99,
+    "description": "Juicy and flavorful tomatoes, perfect for salads, sandwiches, or cooking. Our ripe tomatoes are vine-ripened for maximum flavor and sweetness. Whether you're slicing them for a classic Caprese salad, layering them on a BLT, or simmering them into a rich marinara sauce, our ripe tomatoes add fresh-from-the-garden taste to every bite.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZlGbD8zMPchnc2p54piGtvMnJcqGu36_xfw&s",
+    "rating": 4.7,
+    "category": "Vegetables"
+  },
+  {
+    "name": "Fresh Broccoli",
+    "price": 2.79,
+    "description": "Nutrient-rich broccoli florets, great for steaming, roasting, or stir-frying. Our fresh broccoli is harvested at the peak of freshness, ensuring it's packed with vitamins, minerals, and antioxidants. Whether you're steaming it as a simple side dish, roasting it to crispy perfection, or stir-frying it with your favorite flavors, our fresh broccoli is a versatile and nutritious addition to any meal.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT--FatGYZ7oroZA4V9l01Wirh-MnXwS7-94w&s",
+    "rating": 4.4,
+    "category": "Vegetables"
+  },
+  {
     "name": "Fresh Strawberries",
     "price": 5.99,
-    "image": "https://example.com/images/strawberries.jpg",
+    "description": "Juicy and sweet strawberries, perfect for adding to desserts or enjoying on their own. Our fresh strawberries are hand-picked at the peak of ripeness, ensuring they're bursting with flavor and sweetness. Whether you're topping a slice of cake, blending them into a smoothie, or simply enjoying them by the handful, our fresh strawberries are a delicious and nutritious treat.",
+    "image_url": "https://lush.com.ph/cdn/shop/articles/fresh_strawberries_1000x.jpg?v=1568016879",
     "rating": 4.8,
     "category": "Fresh Fruit"
   },
   {
-    "id": 9,
-    "name": "Assorted Nut Gift Basket",
+    "name": "Ripe Pineapple",
+    "price": 3.99,
+    "description": "Sweet and tangy pineapple, delicious on its own or added to fruit salads or smoothies. Our ripe pineapples are harvested at the peak of sweetness, ensuring they're bursting with tropical flavor. Whether you're enjoying it as a refreshing snack, slicing it into a fruit salad, or blending it into a tropical smoothie, our ripe pineapple adds a taste of the tropics to any dish.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAeyUvt-GGUGLgVMm4HDzwMGBhAVAXkrbuA&s",
+    "rating": 4.7,
+    "category": "Fresh Fruit"
+  },
+  {
+    "name": "Nut Gift Basket",
     "price": 29.99,
-    "image": "https://example.com/images/nut-gift-basket.jpg",
+    "description": "A delightful assortment of premium nuts, elegantly packaged for gifting or personal enjoyment. Our assorted nut gift basket features a curated selection of the finest nuts, including almonds, cashews, pistachios, and pecans. Each nut is carefully roasted and seasoned to perfection, ensuring irresistible flavor and crunch in every bite. Whether you're treating yourself or surprising a loved one, our nut gift basket is a delicious and thoughtful choice.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ8t45dxUFpvY9VRrZzcHLTBzLqMJTFfyOmA&s",
     "rating": 4.7,
     "category": "Nut Gifts"
   },
   {
-    "id": 10,
+    "name": "Deluxe Nut Assortment",
+    "price": 39.99,
+    "description": "An exquisite collection of premium nuts, including almonds, cashews, and pecans, perfect for any occasion. Our deluxe nut assortment is a true indulgence for nut lovers, featuring a carefully curated selection of the finest nuts from around the world. Each nut is hand-selected for its size, flavor, and freshness, then roasted and seasoned to perfection. Whether you're hosting a dinner party, celebrating a special occasion, or simply treating yourself, our deluxe nut assortment is sure to impress.",
+    "image_url": "https://cdn1.1800baskets.com/wcsstore/Baskets/images/catalog/102605x.jpg",
+    "rating": 4.8,
+    "category": "Nut Gifts"
+  },
+  {
+    "name": "Gourmet Chocolate",
+    "price": 19.99,
+    "description": "Crunchy almonds coated in smooth, rich chocolate, a decadent treat for any chocolate lover. Our gourmet chocolate-covered almonds are the ultimate indulgence, combining the irresistible crunch of almonds with the luxurious taste of premium chocolate. Each almond is enrobed in a thick layer of velvety chocolate, then allowed to cool until it forms a crisp shell. Whether you're satisfying a sweet craving or looking for the perfect gift, our gourmet chocolate-covered almonds are sure to please.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ75wP2dwJBfXV25BOg-cJJLMBaA1d0iQxEA&s",
+    "rating": 4.6,
+    "category": "Nut Gifts"
+  },
+  {
+    "name": "Roasted Pistachios",
+    "price": 14.99,
+    "description": "Deliciously crunchy pistachios, lightly roasted and salted for the perfect snack. Our roasted pistachios are a classic snack with a twist, featuring premium pistachios that are lightly roasted to enhance their natural flavor and crunch. Each pistachio is then seasoned with a touch of sea salt, creating a delicious contrast of savory and nutty flavors. Whether you're enjoying them on their own, adding them to trail mix, or sprinkling them over salads, our roasted pistachios are a satisfying and nutritious snack.",
+    "image_url": "https://ajfan.store/cdn/shop/articles/roasted-pistachio.png?v=1686821905",
+    "rating": 4.9,
+    "category": "Nut Gifts"
+  },
+  {
     "name": "Fresh Salmon Fillet",
     "price": 15.99,
-    "image": "https://example.com/images/salmon-fillet.jpg",
+    "description": "Fresh salmon fillet, rich in omega-3 fatty acids and perfect for grilling, broiling, or baking. Our fresh salmon fillets are sustainably sourced from pristine waters and are packed with heart-healthy omega-3 fatty acids. Each fillet is hand-cut and trimmed to perfection, ensuring it's free from bones and skin. Whether you're grilling it with lemon and herbs, broiling it with a honey glaze, or baking it with a teriyaki sauce, our fresh salmon fillet is a versatile and delicious choice for seafood lovers.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUKoR_Z_51LJa3xCr4Edra2iqxetBZ2DLBtw&s",
     "rating": 4.9,
     "category": "Ocean Foods"
   },
   {
-    "id": 11,
-    "name": "Organic Eggs",
-    "price": 4.99,
-    "image": "https://example.com/images/organic-eggs.jpg",
+    "name": "Wild Caught Shrimp",
+    "price": 17.99,
+    "description": "Sweet and succulent wild-caught shrimp, versatile and easy to cook, perfect for a variety of dishes. Our wild-caught shrimp are harvested from the pristine waters of the ocean, ensuring they're free from antibiotics and additives. Each shrimp is hand-selected for its size and sweetness, then flash-frozen to lock in its fresh flavor and texture. Whether you're grilling them on skewers, tossing them in a stir-fry, or serving them with cocktail sauce, our wild-caught shrimp are a delicious and convenient choice for seafood enthusiasts.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLrrrPmQNY1Yyalp8LfmqVWQV56AXvVN3A4w&s",
     "rating": 4.8,
-    "category": "Butter & Eggs"
+    "category": "Ocean Foods"
   },
   {
-    "id": 12,
-    "name": "Cheeseburger",
-    "price": 6.99,
-    "image": "https://example.com/images/cheeseburger.jpg",
-    "rating": 4.6,
-    "category": "Fastfood"
+    "name": "Fresh Tuna Steak",
+    "price": 21.99,
+    "description": "Premium tuna steak, firm and flavorful, perfect for grilling, searing, or sushi. Our fresh tuna steaks are sourced from the highest quality tuna loin, ensuring they're firm, flavorful, and rich in omega-3 fatty acids. Each steak is hand-cut and trimmed to perfection, then vacuum-sealed to lock in its fresh flavor and texture. Whether you're grilling it to perfection, searing it with a sesame crust, or slicing it for sushi, our fresh tuna steak is a versatile and delicious choice for seafood lovers.",
+    "image_url": "https://www.tastingtable.com/img/gallery/14-tips-you-need-when-cooking-with-tuna/l-intro-1671563002.jpg",
+    "rating": 4.7,
+    "category": "Ocean Foods"
   }
 ]
