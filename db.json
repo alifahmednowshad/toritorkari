@@ -1,0 +1,58 @@
+[
+  {
+    "id": 6,
+    "name": "Fresh Chicken Breast",
+    "price": 9.99,
+    "image": "https://example.com/images/chicken-breast.jpg",
+    "rating": 4.9,
+    "category": "Fresh Meat"
+  },
+  {
+    "id": 7,
+    "name": "Organic Carrots",
+    "price": 3.49,
+    "image": "https://example.com/images/carrots.jpg",
+    "rating": 4.5,
+    "category": "Vegetables"
+  },
+  {
+    "id": 8,
+    "name": "Fresh Strawberries",
+    "price": 5.99,
+    "image": "https://example.com/images/strawberries.jpg",
+    "rating": 4.8,
+    "category": "Fresh Fruit"
+  },
+  {
+    "id": 9,
+    "name": "Assorted Nut Gift Basket",
+    "price": 29.99,
+    "image": "https://example.com/images/nut-gift-basket.jpg",
+    "rating": 4.7,
+    "category": "Nut Gifts"
+  },
+  {
+    "id": 10,
+    "name": "Fresh Salmon Fillet",
+    "price": 15.99,
+    "image": "https://example.com/images/salmon-fillet.jpg",
+    "rating": 4.9,
+    "category": "Ocean Foods"
+  },
+  {
+    "id": 11,
+    "name": "Organic Eggs",
+    "price": 4.99,
+    "image": "https://example.com/images/organic-eggs.jpg",
+    "rating": 4.8,
+    "category": "Butter & Eggs"
+  },
+  {
+    "id": 12,
+    "name": "Cheeseburger",
+    "price": 6.99,
+    "image": "https://example.com/images/cheeseburger.jpg",
+    "rating": 4.6,
+    "category": "Fastfood"
+  }
+]

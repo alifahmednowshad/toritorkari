@@ -14,75 +14,78 @@ import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/dashboard/Profile";
 import AddProduct from "../pages/dashboard/AddProduct";
 import ManageProduct from "../pages/dashboard/ManageProduct";
+import ProductDetails from "../components/Products/ProductDetails";
 
 
 
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <MainLayout />,
-      errorElement: <ErrorPage />,
-      children: [
-        {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "/shop",
-          element: <Shop />,
-        },
-        {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/blog",
-          element: <Blog />,
-        },
-        {
-          path: "/contact",
-          element: <Contact />,
-        },
-      ],
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-    {
-      path: "/dashboard",
-      errorElement: <ErrorPage />,
-      element: (
-        <PrivateRoute>
-          <DashboardLayout />
-        </PrivateRoute>
-      ),
-      children: [
-        {
-          index: true,
-          element: <DashboardHome />,
-        },
-        {
-          path: "profile",
-          element: <Profile />,
-        },
-        {
-          path: "addProduct",
-          element: <AddProduct />,
-        },
-        {
-          path: "manageProduct",
-          element: <ManageProduct />,
-        },
-      ],
-    },
-  ],
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails />
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    errorElement: <ErrorPage />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "addProduct",
+        element: <AddProduct />,
+      },
+      {
+        path: "manageProduct",
+        element: <ManageProduct />,
+      },
+    ],
+  },
+]);
 
 export default router;

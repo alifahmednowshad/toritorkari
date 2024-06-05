@@ -18,7 +18,7 @@ const Bannar = () => {
               <p className="mb-5 text-gray-700">
                 Free Pickup and Delivery Available
               </p>
-              <button className="btn btn-success">SHOP NOW</button>
+              <button className="btn btn-success text-white">SHOP NOW</button>
             </div>
           </div>
         </div>
