@@ -1,9 +1,10 @@
+import Profile from "./Profile";
 
 
 const DashboardHome = () => {
     return (
         <div>
-           this is dashboard 
+           <Profile/>
         </div>
     );
 };

@@ -1,23 +1,48 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/auth/GoogleLogin";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const { user, createUser } = useAuth();
+  const { createUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [error, setError] = useState("");
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    createUser(name, email, password); 
-    if (user) {
-      navigate(from);
+
+    try {
+      const createdUser = await createUser(email, password);
+      if (createdUser) {
+        const userInfo = { email: createdUser.email, name: name };
+        const response = await fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userInfo),
+        });
+
+        if (response.ok) {
+          toast.success("Registration successful!");
+          navigate(from);
+        } else {
+          const result = await response.json();
+          console.error("Failed to save user information:", result);
+          setError("Failed to save user information.");
+        }
+      }
+    } catch (err) {
+      console.error("Error creating user:", err);
+      setError(
+        "Failed to create an account. Please check your input and try again."
+      );
     }
   };
 
@@ -32,11 +57,12 @@ const Register = () => {
             a id nisi.
           </p>
         </div>
-        <div className=" card shadow-2xl bg-base-100 max-w-lg">
-          <form onSubmit={handleSubmit} className="card-body  ">
+        <div className="card shadow-2xl bg-base-100 max-w-lg">
+          <form onSubmit={handleSubmit} className="card-body">
+            {error && <div className="text-red-500 mb-4">{error}</div>}
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Name</span>{" "}
+                <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
@@ -53,7 +79,7 @@ const Register = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 className="input input-bordered"
                 required
               />
@@ -65,7 +91,7 @@ const Register = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 className="input input-bordered"
                 required
               />
@@ -73,20 +99,21 @@ const Register = () => {
             <div className="form-control mt-2">
               <button className="btn btn-primary">Register</button>
               <p className="text-center">
-                Already have an account ?{" "}
-                <Link to={"/login"} className="text-orange-500">
+                Already have an account?{" "}
+                <Link to="/login" className="text-orange-500">
                   Login
                 </Link>
               </p>
             </div>
           </form>
-          <div className="  w-full ">
+          <div className="w-full">
             <div className="flex flex-col gap-2 mx-7 mb-7">
               <GoogleLogin />
             </div>
           </div>
         </div>
       </div>
+      <Toaster/>
     </div>
   );
 };

@@ -15,8 +15,8 @@ const Shop = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-xl text-black font-bold text-center">
-        Featured Product
+      <h1 className="text-xl my-8 text-black font-bold text-center">
+        Shop Now
       </h1>
       <div className="flex">
         <div className="w-1/4 p-4 bg-gray-100">
@@ -26,7 +26,6 @@ const Shop = () => {
               "All",
               "Fresh Meat",
               "Vegetables",
-              "Fastfood",
               "Fresh Fruit",
               "Nut Gifts",
               "Ocean Foods",
@@ -55,7 +54,7 @@ const Shop = () => {
             <option value="ratingHighToLow">Rating: High to Low</option>
           </select>
         </div>
-        <div className="mx-5">
+        <div className="ms-5">
           <AllProduct category={category} sortOption={sortOption} />
         </div>
       </div>

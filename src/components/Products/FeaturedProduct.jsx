@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProductCarousel from "./ProductCarousel";
 
 const FeaturedProduct = () => {
     const [products, setProducts] = useState([]);
@@ -11,16 +12,11 @@ const FeaturedProduct = () => {
   },[]);
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-20">
       <h1 className="mb-5 text-5xl text-black font-bold text-center">
         Featured Product
       </h1>
-      <div className="flex justify-center items-center gap-5 text-xl">
-        <div>All</div>
-        <div>Fresh Meat </div>
-        <div>Vegetables</div>
-        <div>Fastfood</div>
-      </div>
+      <ProductCarousel/>
     </div>
   );
 };

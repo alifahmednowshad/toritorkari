@@ -59,7 +59,7 @@ const ProductCarousel = () => {
           <SwiperSlide key={product._id} product={product}>
             <div className="card w-full bg-base-100 shadow relative">
               <div
-                className="h-64 md:h-72 lg:h-96 rounded bg-cover bg-center"
+                className="h-50 md:h-72 lg:h-96 rounded bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${product.image_url})`,
                 }}
