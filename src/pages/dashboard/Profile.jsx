@@ -40,7 +40,6 @@ const Profile = () => {
               <span className="font-semibold">UID:</span>
               <span>{user.uid}</span>
             </div>
-            {/* Add more user information here if needed */}
           </div>
         </div>
       </div>

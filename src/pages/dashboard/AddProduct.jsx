@@ -12,7 +12,7 @@ const AddProduct = () => {
     category: "",
   });
   const [errors, setErrors] = useState({});
-  
+
   const token = localStorage.getItem("token");
 
   const handleChange = (e) => {

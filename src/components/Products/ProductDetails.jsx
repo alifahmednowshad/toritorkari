@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoaderIcon } from "react-hot-toast";
-import { Link, useParams } from "react-router-dom"; 
+import { Link, useParams } from "react-router-dom";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(null);
@@ -18,9 +18,11 @@ const ProductDetails = () => {
   if (!product) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="text-2xl">Loading <LoaderIcon/></div>
+        <div className="text-2xl">
+          Loading <LoaderIcon />
+        </div>
       </div>
-    ); 
+    );
   }
 
   const { name, price, description, rating, image_url } = product;

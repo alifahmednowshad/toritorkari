@@ -4,9 +4,9 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const ManageProductCard = ({ product, onDelete }) => {
-     const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    const { _id, name, price, rating, image_url } = product;
+  const { _id, name, price, rating, image_url } = product;
 
   const handleDelete = async () => {
     try {

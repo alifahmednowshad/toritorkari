@@ -113,7 +113,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
