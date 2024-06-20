@@ -10,12 +10,15 @@ const ManageProductCard = ({ product, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/product/${_id}`, {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://toritorkari-server.vercel.app/product/${_id}`,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success("Product Deleted", {
         position: "top-center", // Show toast in the center
       });

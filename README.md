@@ -5,7 +5,7 @@ Welcome to Toritorkari, your one-stop online platform for purchasing fresh veget
 ## Live Links
 
 - **Client Site:** [Toritorkari Client](https://toritorkari.vercel.app/)
-- **Server Site:** [Toritorkari Server](http://localhost:5000/)
+- **Server Site:** [Toritorkari Server](https://toritorkari-server.vercel.app/)
 
 ## Features
 

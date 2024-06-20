@@ -9,7 +9,7 @@ const Details = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:5000/product/${id}`)
+      fetch(`https://toritorkari-server.vercel.app/product/${id}`)
         .then((res) => res.json())
         .then((data) => setProduct(data))
         .catch((error) => console.error("Error fetching product:", error));

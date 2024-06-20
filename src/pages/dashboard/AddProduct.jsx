@@ -71,12 +71,16 @@ const AddProduct = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/product", product, {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.post(
+        "https://toritorkari-server.vercel.app/product",
+        product,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success("Product added successfully");
       setProduct({
         name: "",

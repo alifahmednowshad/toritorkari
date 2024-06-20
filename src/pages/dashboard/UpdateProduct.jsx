@@ -21,7 +21,9 @@ const UpdateProduct = () => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5000/product/${id}`);
+        const response = await axios.get(
+          `https://toritorkari-server.vercel.app/product/${id}`
+        );
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -91,7 +93,7 @@ const UpdateProduct = () => {
 
     try {
       await axios.patch(
-        `http://localhost:5000/product/${product._id}`,
+        `https://toritorkari-server.vercel.app/product/${product._id}`,
         product,
         {
           headers: {

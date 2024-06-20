@@ -8,7 +8,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:5000/product/${id}`)
+      fetch(`https://toritorkari-server.vercel.app/product/${id}`)
         .then((res) => res.json())
         .then((data) => setProduct(data))
         .catch((error) => console.error("Error fetching product:", error));
@@ -42,9 +42,7 @@ const ProductDetails = () => {
           <p className="text-lg font-light">{description}</p>
           <div className="card-actions justify-between mt-4">
             <h3 className=" text-gray-700">{price} $$</h3>
-            <div className=" text-yellow-500">
-              Rating: {rating}
-            </div>
+            <div className=" text-yellow-500">Rating: {rating}</div>
           </div>
         </div>
       </div>
