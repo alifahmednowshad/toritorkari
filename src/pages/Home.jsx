@@ -1,5 +1,6 @@
 import Bannar from "../components/Home/Bannar";
 import FeaturedProduct from "../components/Products/FeaturedProduct";
+import HomeProduct from "../components/Products/HomeProduct";
 import BlogCard from "../components/shared/BlogCard";
 import ContactCard from "../components/shared/ContactCard";
 
@@ -28,6 +29,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <HomeProduct/>
         <div className="bg-gray-100 py-10">
           <div className="container mx-auto my-20">
             <ContactCard />

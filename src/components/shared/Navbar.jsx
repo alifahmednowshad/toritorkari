@@ -104,7 +104,7 @@ const Navbar = () => {
                 >
                   <li>
                     <Link className="text-green-700 font-bold">
-                      {user.displayName}
+                      {user?.displayName}
                     </Link>
                   </li>
                   <li>

@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
@@ -13,10 +14,11 @@ const GoogleLogin = () => {
   const handleSubmit = () => {
     googleLogin()
       .then((data) => {
-        if (data?.user?.email) {
+        if (data?.uid) {
           const userInfo = {
-            email: data?.user?.email,
-            name: data?.user?.displayName,
+            email: data?.email,
+            name: data?.displayName,
+            uid: data?.uid,
           };
           axios
             .post("http://localhost:5000/user", userInfo, {
@@ -27,15 +29,17 @@ const GoogleLogin = () => {
             .then((res) => {
               localStorage.setItem("token", res.data.token);
               console.log("Google login success");
-              navigate(from);
+              navigate(from, { replace: true });
             })
             .catch((error) => {
               console.error("Error logging in with Google:", error);
+              toast.error("Error logging in with Google:", error);
             });
         }
       })
       .catch((error) => {
         console.error("Error signing in with Google:", error);
+        toast.error("Error signing in with Google:", error);
       });
   };
 

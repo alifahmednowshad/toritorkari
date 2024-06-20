@@ -10,7 +10,7 @@ const ManageProductCard = ({ product, onDelete }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/product/${_id}`, product, {
+      await axios.delete(`http://localhost:5000/product/${_id}`, {
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -47,13 +47,13 @@ const ManageProductCard = ({ product, onDelete }) => {
             </h3>
           </div>
           <div className="flex items-center justify-between mt-4">
-            <Link
+            <button
               role="button"
               onClick={handleDelete}
               className="btn btn-error text-white"
             >
               Delete
-            </Link>
+            </button>
             <Link
               to={`update/${_id}`}
               className="btn btn-warning text-white ml-2"

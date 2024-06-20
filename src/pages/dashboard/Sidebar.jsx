@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAdmin from "../../hooks/useAdmin";
 
 const Sidebar = () => {
-  
-  const { logOut } = useAuth();
+  const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin(user?.email);
+console.log(isAdmin)
 
   const handleLogout = async () => {
     try {
@@ -29,18 +31,31 @@ const Sidebar = () => {
         >
           Profile
         </Link>
-        <Link
-          to="/dashboard/addProduct"
-          className="p-2 mt-2 hover:bg-gray-700 rounded"
-        >
-          Add Product
-        </Link>
-        <Link
-          to="/dashboard/allManageProduct"
-          className="p-2 mt-2 hover:bg-gray-700 rounded"
-        >
-          Manage Product
-        </Link>
+
+        {isAdmin ? (
+          <>
+            <Link
+              to="/dashboard/users"
+              className="p-2 mt-2 hover:bg-gray-700 rounded"
+            >
+              Users
+            </Link>
+            <Link
+              to="/dashboard/addProduct"
+              className="p-2 mt-2 hover:bg-gray-700 rounded"
+            >
+              Add Product
+            </Link>
+            <Link
+              to="/dashboard/allManageProduct"
+              className="p-2 mt-2 hover:bg-gray-700 rounded"
+            >
+              Manage Product
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="p-4">
         <button

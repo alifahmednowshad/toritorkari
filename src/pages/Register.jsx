@@ -2,48 +2,70 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../components/auth/GoogleLogin";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile, verifyEmail } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [error, setError] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
+  const handleSignUp = (data) => {
+    setError("");
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result;
+        updateUserProfile(data.name, user.photoURL, user.uid).then(() => {
+          const saveUser = {
+            name: data.name,
+            email: user.email,
+            uid: user.uid,
+          };
+          axios
+            .post("http://localhost:5000/user", saveUser)
+            .then((res) => {
+              console.log(res); // Log the response data if needed
+              if (res.data.token) {
+                reset();
+                toast.success("User Created Successfully.", {
+                  position: "top-center",
+                });
+                navigate(from, { replace: true });
+              }
+            })
+            .catch((error) => {
+              console.error("Error creating user:", error);
+              const errorMessage =
+                error.response?.data?.message ||
+                error.message ||
+                "Failed to create an account. Please check your input and try again.";
 
-    try {
-      const createdUser = await createUser(email, password);
-      if (createdUser) {
-        const userInfo = { email: createdUser.email, name: name };
-        const response = await fetch("http://localhost:5000/user", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userInfo),
+              setError(errorMessage);
+              toast.error(errorMessage, { position: "top-center" });
+            });
         });
+        verifyEmail(); // Ensure this function is defined and handles email verification
+      })
+      .catch((error) => {
+        console.error("Error creating user:", error);
+        const errorMessage =
+          error.response?.data?.message ||
+          error.message ||
+          "Failed to create an account. Please check your input and try again.";
 
-        if (response.ok) {
-          toast.success("Registration successful!");
-          navigate(from);
-        } else {
-          const result = await response.json();
-          console.error("Failed to save user information:", result);
-          setError("Failed to save user information.");
-        }
-      }
-    } catch (err) {
-      console.error("Error creating user:", err);
-      setError(
-        "Failed to create an account. Please check your input and try again."
-      );
-    }
+        setError(errorMessage);
+        toast.error(errorMessage, { position: "top-center" });
+      });
   };
 
   return (
@@ -58,7 +80,7 @@ const Register = () => {
           </p>
         </div>
         <div className="card shadow-2xl bg-base-100 max-w-lg">
-          <form onSubmit={handleSubmit} className="card-body">
+          <form onSubmit={handleSubmit(handleSignUp)} className="card-body">
             {error && <div className="text-red-500 mb-4">{error}</div>}
             <div className="form-control">
               <label className="label">
@@ -69,8 +91,11 @@ const Register = () => {
                 name="name"
                 placeholder="Name"
                 className="input input-bordered"
-                required
+                {...register("name", { required: "Name is required" })}
               />
+              {errors.name && (
+                <p className="text-red-500">{errors.name.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -81,8 +106,17 @@ const Register = () => {
                 name="email"
                 placeholder="Email"
                 className="input input-bordered"
-                required
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Entered value does not match email format",
+                  },
+                })}
               />
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -93,8 +127,17 @@ const Register = () => {
                 name="password"
                 placeholder="Password"
                 className="input input-bordered"
-                required
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must have at least 6 characters",
+                  },
+                })}
               />
+              {errors.password && (
+                <p className="text-red-500">{errors.password.message}</p>
+              )}
             </div>
             <div className="form-control mt-2">
               <button className="btn btn-primary">Register</button>

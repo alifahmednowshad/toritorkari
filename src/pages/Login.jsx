@@ -1,35 +1,41 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../hooks/useAuth";
 import GoogleLogin from "../components/auth/GoogleLogin";
-import Modal from "../components/shared/Modal";
 
 const Login = () => {
   const { signIn, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-
-    signIn(email, password)
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
       .then(() => {
         if (user) {
-          setIsModalVisible(true);
+          toast.success("Login successful!", {
+            position: "top-center",
+            autoClose: 2000,
+          });
           setTimeout(() => {
-            setIsModalVisible(false);
             navigate(from);
           }, 2000);
         }
       })
       .catch((error) => {
         console.error("Error sign in:", error);
+        toast.error("Login failed. Please check your credentials.", {
+          position: "top-center",
+          autoClose: 3000,
+        });
       });
   };
 
@@ -48,7 +54,7 @@ const Login = () => {
           </div>
           <div className="flex justify-end">
             <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-              <form onSubmit={handleSubmit} className="card-body">
+              <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -57,9 +63,16 @@ const Login = () => {
                     type="email"
                     name="email"
                     placeholder="email"
-                    className="input input-bordered"
-                    required
+                    className={`input input-bordered ${
+                      errors.email ? "input-error" : ""
+                    }`}
+                    {...register("email", { required: "Email is required" })}
                   />
+                  {errors.email && (
+                    <span className="text-xs text-red-500">
+                      {errors.email.message}
+                    </span>
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -69,9 +82,18 @@ const Login = () => {
                     type="password"
                     name="password"
                     placeholder="password"
-                    className="input input-bordered"
-                    required
+                    className={`input input-bordered ${
+                      errors.password ? "input-error" : ""
+                    }`}
+                    {...register("password", {
+                      required: "Password is required",
+                    })}
                   />
+                  {errors.password && (
+                    <span className="text-xs text-red-500">
+                      {errors.password.message}
+                    </span>
+                  )}
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
                       Forgot password?
@@ -79,7 +101,9 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <button type="submit" className="btn btn-primary">
+                    Login
+                  </button>
                 </div>
                 <p className="text-center">
                   Don&apos;t have any account?{" "}
@@ -98,14 +122,8 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Modal */}
-      <Modal
-        isVisible={isModalVisible}
-        onClose={() => setIsModalVisible(false)}
-        title="Login Successful"
-      >
-        <p>You have successfully logged in!</p>
-      </Modal>
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };

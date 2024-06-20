@@ -17,6 +17,9 @@ import ProductDetails from "../components/Products/ProductDetails";
 import Details from "../components/Dashboard/Product/Details";
 import AllManageProduct from "../pages/dashboard/AllManageProduct";
 import UpdateProduct from "../pages/dashboard/UpdateProduct";
+import Users from "../pages/dashboard/Admin/Users";
+import AdminRoute from "./AdminRoute";
+
 
 const router = createBrowserRouter([
   {
@@ -76,21 +79,45 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <Users />
+          </AdminRoute>
+        ),
+      },
+      {
         path: "addProduct",
-        element: <AddProduct />,
+        element: (
+          <AdminRoute>
+            <AddProduct />
+          </AdminRoute>
+        ),
       },
 
       {
         path: "allManageProduct",
-        element: <AllManageProduct />,
+        element: (
+          <AdminRoute>
+            <AllManageProduct />
+          </AdminRoute>
+        ),
       },
       {
         path: "allManageProduct/details/:id",
-        element: <Details />,
+        element: (
+          <AdminRoute>
+            <Details />
+          </AdminRoute>
+        ),
       },
       {
         path: "allManageProduct/update/:id",
-        element: <UpdateProduct />,
+        element: (
+          <AdminRoute>
+            <UpdateProduct />
+          </AdminRoute>
+        ),
       },
     ],
   },
