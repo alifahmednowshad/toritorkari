@@ -5,7 +5,6 @@ import useAdmin from "../../hooks/useAdmin";
 const Sidebar = () => {
   const { user, logOut } = useAuth();
   const [isAdmin] = useAdmin(user?.email);
-console.log(isAdmin)
 
   const handleLogout = async () => {
     try {

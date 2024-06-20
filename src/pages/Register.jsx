@@ -25,12 +25,15 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result;
+        console.log(user.photoURL);
         updateUserProfile(data.name, user.photoURL, user.uid).then(() => {
           const saveUser = {
             name: data.name,
             email: user.email,
             uid: user.uid,
+            photoURL: user.photoURL,
           };
+          console.log(saveUser);
           axios
             .post("http://localhost:5000/user", saveUser)
             .then((res) => {

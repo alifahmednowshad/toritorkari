@@ -81,11 +81,12 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-    const updateUserProfile = (name, email, uid) => {
+    const updateUserProfile = (name, email, uid, photoURL) => {
       return updateProfile(auth.currentUser, {
         displayName: name,
         email: email,
         uid: uid,
+        photoURL: photoURL,
       });
     };
 

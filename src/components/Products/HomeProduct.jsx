@@ -14,7 +14,7 @@ const HomeProduct = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="mb-10 text-5xl text-black font-bold text-center">
+      <h1 className="mb-10 text-black text-center">
         Shop Now
       </h1>
       <div className="mb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -29,14 +29,14 @@ const HomeProduct = () => {
                 />
               </figure>
               <div className="card-body flex flex-col flex-grow">
-                <h2 className="card-title text-xl font-bold">{product.name}</h2>
+                <h4 className="">{product.name}</h4>
                 <div className="flex justify-between">
-                  <h3 className="text-lg font-semibold text-yellow-500">
+                  <h5 className=" text-yellow-500">
                     Rating: {product.rating}
-                  </h3>
-                  <h3 className="text-md font-semibold text-gray-700">
+                  </h5>
+                  <h5 className="text-gray-700">
                     Price: ${product.price}
-                  </h3>
+                  </h5>
                 </div>
                 <div className="flex items-center justify-end mt-4">
                   <Link

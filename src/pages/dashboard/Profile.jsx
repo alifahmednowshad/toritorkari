@@ -3,15 +3,20 @@ import { toast } from "react-toastify";
 import LoadingSpinner from "../../components/shared/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { FaUserEdit } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
 const Profile = () => {
-  const { user, setUser } = useAuth();
+  const { user, updateUserProfile } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    displayName: user?.displayName || "",
-    password: "",
-    photoURL: user?.photoURL || "",
-  });
+  const token = localStorage.getItem("token");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+    reset,
+  } = useForm();
 
   if (!user) {
     return (
@@ -23,16 +28,23 @@ const Profile = () => {
 
   const handleEdit = () => {
     setIsEditing(true);
+    reset({
+      name: user.name,
+      oldPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+      photoURL: user.photoURL,
+    });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("authToken");
+  const handleFormSubmit = async (formData) => {
+    // Check if new password and confirm password match
+    if (formData.newPassword !== formData.confirmPassword) {
+      toast.error("New password and confirm password do not match.", {
+        position: "top-center",
+      });
+      return;
+    }
 
     try {
       const response = await axios.patch(
@@ -46,7 +58,7 @@ const Profile = () => {
       );
 
       if (response.status === 200) {
-        setUser({ ...user, ...formData });
+        updateUserProfile({ ...user, ...formData, password: "" });
         toast.success("Profile updated successfully.", {
           position: "center",
         });
@@ -66,20 +78,7 @@ const Profile = () => {
         onClick={handleEdit}
         className="absolute top-4 right-4 p-2 bg-gray-200 hover:bg-gray-300 rounded-full"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 12h.01M12 12h.01M9 12h.01M21 12.5a9.97 9.97 0 00-.42-2.47l-2.83 2.83a4.002 4.002 0 01-4.48.47l-3.59-3.59a4.002 4.002 0 01-.47-4.48l2.83-2.83A9.97 9.97 0 0012.5 3c-2.75 0-5.22 1.12-7.07 2.93C3.12 8.28 2 10.75 2 13.5S3.12 18.72 4.93 20.57C6.78 22.43 9.25 23.55 12 23.55s5.22-1.12 7.07-2.93A9.974 9.974 0 0021 12.5z"
-          />
-        </svg>
+        <FaUserEdit />
       </button>
 
       <div className="flex flex-col items-center space-y-6">
@@ -115,7 +114,7 @@ const Profile = () => {
       {isEditing && (
         <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50">
           <form
-            onSubmit={handleFormSubmit}
+            onSubmit={handleSubmit(handleFormSubmit)}
             className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm"
           >
             <h2 className="text-xl font-bold mb-4">Edit Profile</h2>
@@ -129,27 +128,72 @@ const Profile = () => {
               <input
                 type="text"
                 id="displayName"
-                name="displayName"
-                value={formData.displayName}
-                onChange={handleInputChange}
+                {...register("name", { required: true })}
+                defaultValue={user.displayName}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
+              {errors.name && (
+                <p className="text-red-500 mt-1">Name is required</p>
+              )}
             </div>
             <div className="mb-4">
               <label
-                htmlFor="password"
+                htmlFor="oldPassword"
                 className="block text-gray-700 font-bold mb-2"
               >
-                Password
+                Old Password
               </label>
               <input
                 type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
+                id="oldPassword"
+                {...register("oldPassword")}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
+              {errors.oldPassword && (
+                <p className="text-red-500 mt-1">Old Password is required</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="newPassword"
+                className="block text-gray-700 font-bold mb-2"
+              >
+                New Password
+              </label>
+              <input
+                type="password"
+                id="newPassword"
+                {...register("newPassword")}
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+              {errors.newPassword && (
+                <p className="text-red-500 mt-1">New Password is required</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-gray-700 font-bold mb-2"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                {...register("confirmPassword", {
+                  validate: {
+                    matchesNewPassword: (value) =>
+                      value === getValues().newPassword ||
+                      "Passwords do not match",
+                  },
+                })}
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+              {errors.confirmPassword && (
+                <p className="text-red-500 mt-1">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
             </div>
             <div className="mb-4">
               <label
@@ -161,9 +205,8 @@ const Profile = () => {
               <input
                 type="text"
                 id="photoURL"
-                name="photoURL"
-                value={formData.photoURL}
-                onChange={handleInputChange}
+                {...register("photoURL")}
+                defaultValue={user.photoURL}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
             </div>

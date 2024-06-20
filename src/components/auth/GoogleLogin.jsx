@@ -19,6 +19,7 @@ const GoogleLogin = () => {
             email: data?.email,
             name: data?.displayName,
             uid: data?.uid,
+            photoURL: data?.photoURL,
           };
           axios
             .post("http://localhost:5000/user", userInfo, {

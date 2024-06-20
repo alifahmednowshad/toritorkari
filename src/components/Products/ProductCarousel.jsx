@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import required modules
+// Import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 
@@ -34,6 +34,7 @@ const ProductCarousel = () => {
           disableOnInteraction: false,
         }}
         navigation={true}
+        pagination={{ clickable: true }}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
         breakpoints={{
@@ -56,7 +57,7 @@ const ProductCarousel = () => {
         }}
       >
         {products.map((product) => (
-          <SwiperSlide key={product._id} product={product}>
+          <SwiperSlide key={product._id}>
             <div className="card w-full bg-base-100 shadow relative">
               <div
                 className="h-50 md:h-72 lg:h-96 rounded bg-cover bg-center"

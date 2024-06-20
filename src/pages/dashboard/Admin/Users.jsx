@@ -3,11 +3,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import LoadingSpinner from "../../../components/shared/LoadingSpinner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const token = localStorage.getItem("token");
+  const currentUserId = localStorage.getItem("uid");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const fetchUsers = async () => {
     setIsLoading(true);
@@ -67,6 +72,10 @@ const Users = () => {
         toast.success("Deleted Successfully.", {
           position: "top-center",
         });
+        // If the current user deletes their own account and no users left, navigate to home page
+        if (uid === currentUserId && users.length === 1) {
+          navigate(from);
+        }
       })
       .catch((error) => {
         console.error("Error deleting user:", error);

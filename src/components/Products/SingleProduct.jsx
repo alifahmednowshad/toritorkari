@@ -17,14 +17,14 @@ const SingleProduct = ({ product }) => {
             />
           </figure>
           <div className="card-body flex flex-col flex-grow">
-            <h2 className="card-title text-xl font-bold">{name}</h2>
+            <h4 className="">{name}</h4>
             <div className="flex justify-between">
-              <h3 className="text-lg font-semibold text-yellow-500">
+              <h5 className=" text-yellow-500">
                 Rating: {rating}
-              </h3>
-              <h3 className="text-md font-semibold text-gray-700">
+              </h5>
+              <h5 className=" text-gray-700">
                 Price: ${price}
-              </h3>
+              </h5>
             </div>
             <div className="flex items-center justify-end mt-4">
               <Link

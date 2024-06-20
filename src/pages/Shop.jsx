@@ -15,9 +15,9 @@ const Shop = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-xl my-8 text-black font-bold text-center">
+      <h2 className="my-8 text-black text-center">
         Shop Now
-      </h1>
+      </h2>
       <div className="drawer gap-5 lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col justify-center">
