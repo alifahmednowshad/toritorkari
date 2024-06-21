@@ -15,21 +15,19 @@ const Shop = () => {
 
   return (
     <div className="container mx-auto">
-      <h2 className="my-8 text-black text-center">
-        Shop Now
-      </h2>
+      <h2 className="my-8 text-black text-center">Shop Now</h2>
       <div className="drawer gap-5 lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col justify-center">
+          <label
+            htmlFor="my-drawer-2"
+            className="btn btn-primary mb-5 rounded-none drawer-button lg:hidden"
+          >
+            Open Menu Filter
+          </label>
           <div className="mb-10">
             <AllProduct category={category} sortOption={sortOption} />
           </div>
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
         </div>
         <div className="drawer-side">
           <label

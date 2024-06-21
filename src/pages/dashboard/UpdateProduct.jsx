@@ -110,7 +110,7 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="w-8/12 mx-auto p-4 my-5">
+    <div className="sm:w-8/12 sm:mx-auto p-4 my-5">
       <h1 className="text-3xl font-bold mb-8 text-center">Update Product</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 ">

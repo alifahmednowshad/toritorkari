@@ -4,7 +4,6 @@ import SingleProduct from "./SingleProduct";
 // eslint-disable-next-line react/prop-types
 const AllProduct = ({ category, sortOption }) => {
   const [products, setProducts] = useState([]);
-  console.log(products);
 
   useEffect(() => {
     fetch("https://toritorkari-server.vercel.app/product")
@@ -40,7 +39,7 @@ const AllProduct = ({ category, sortOption }) => {
 
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-2 gap-5">
         {products.map((product) => (
           <SingleProduct key={product._id} product={product} />
         ))}

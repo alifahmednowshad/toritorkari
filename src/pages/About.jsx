@@ -4,16 +4,16 @@ const About = () => {
   return (
     <div className="container mx-auto">
       <div className="bg-white py-10 px-4 sm:px-6 lg:py-20 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="w-full flex gap-10 justify-between items-center">
-            <div className="w-1/2">
+        <div className="grid gap-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-20 justify-between items-center">
+            <div>
               <img
                 className="w-full h-96"
                 src="https://img.freepik.com/premium-vector/business-consultants-presenting-new-strategy-clients-sleek-conference-room-vector_1075459-1155.jpg?w=360"
                 alt=""
               />
             </div>
-            <div className="w-1/2">
+            <div>
               <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                 About Us
               </h3>
@@ -25,8 +25,8 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="w-full flex gap-10 justify-between items-center">
-            <div className="w-1/2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-20 justify-between items-center">
+            <div className="order-last sm:order-none">
               <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                 Our Story
               </h3>
@@ -40,7 +40,7 @@ const About = () => {
                 wing of the food industry.
               </p>
             </div>
-            <div className="w-1/2">
+            <div className="order-first sm:order-none">
               <img
                 className="w-full"
                 src="https://img.freepik.com/premium-vector/book-festival-fair-concept-small-people-reading-open-huge-book-back-school_1187015-11801.jpg?w=740"
@@ -48,15 +48,15 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="w-full flex gap-10 justify-between items-center">
-            <div className="w-1/2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-20 justify-between items-center">
+            <div>
               <img
                 className="w-full h-96"
                 src="https://img.freepik.com/premium-vector/learn-from-failure-mistake-admit-embrace-failure-practice-achieve-success-t_926199-3663305.jpg?w=740"
                 alt=""
               />
             </div>
-            <div className="w-1/2">
+            <div>
               <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                 Our Mission
               </h3>
@@ -70,8 +70,8 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="w-full flex gap-10 justify-between items-center">
-            <div className="w-1/2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-20 justify-between items-center">
+            <div className="order-last sm:order-none">
               <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                 Why Choose Us?
               </h3>
@@ -94,7 +94,7 @@ const About = () => {
                 </li>
               </ul>
             </div>
-            <div className="w-1/2">
+            <div className="order-first sm:order-none">
               <img
                 className="w-full h-96"
                 src="https://img.freepik.com/premium-vector/brand-strategy-tactic-planning-reach-goal-achieve-target-challenge-professional-skill_926199-3663314.jpg?w=740"
@@ -102,15 +102,15 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 md:gap-10 justify-between items-center">
-            <div className="w-1/2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-20 justify-between items-center">
+            <div className="-my-10 sm:my-0">
               <img
                 className="w-full h-96"
                 src="https://img.freepik.com/free-vector/illustration-diverse-people_53876-28459.jpg?t=st=1718785572~exp=1718789172~hmac=4b938b7dfa61b3117fda4a8607a0a5ba9440537f66cc723e28ef64b4db2a96d3&w=740"
                 alt=""
               />
             </div>
-            <div className="w-1/2">
+            <div>
               <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                 Join Our Community
               </h3>

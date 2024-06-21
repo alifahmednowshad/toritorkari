@@ -37,10 +37,8 @@ const Home = () => {
           </div>
         </div>
         <div className="container mx-auto my-20">
-          <h1 className="mb-10 text-black text-center">
-            From The Blog
-          </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+          <h1 className="mb-10 text-black text-center">From The Blog</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             <BlogCard />
           </div>
         </div>

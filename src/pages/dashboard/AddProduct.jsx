@@ -98,7 +98,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-8/12 mx-auto p-4 my-5">
+    <div className="sm:w-8/12 sm:mx-auto p-4 my-5">
       <h1 className="text-2xl font-bold mb-4">Add a Product</h1>
 
       <form onSubmit={handleSubmit}>
