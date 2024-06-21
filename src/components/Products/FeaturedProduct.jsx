@@ -1,4 +1,5 @@
-import ProductCarousel from "./ProductCarousel";
+import ProductCarousel from "./ProductCarousel/ProductCarousel";
+
 
 const FeaturedProduct = () => {
   return (
