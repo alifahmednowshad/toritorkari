@@ -8,7 +8,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://toritorkari-server.vercel.app/product/${id}`)
+      fetch(`https://toritorkari-server.onrender.com/product/${id}`)
         .then((res) => res.json())
         .then((data) => setProduct(data))
         .catch((error) => console.error("Error fetching product:", error));

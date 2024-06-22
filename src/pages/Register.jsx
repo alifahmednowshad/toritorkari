@@ -35,7 +35,7 @@ const Register = () => {
           };
           console.log(saveUser);
           axios
-            .post("https://toritorkari-server.vercel.app/user", saveUser)
+            .post("https://toritorkari-server.onrender.com/user", saveUser)
             .then((res) => {
               console.log(res); // Log the response data if needed
               if (res.data.token) {

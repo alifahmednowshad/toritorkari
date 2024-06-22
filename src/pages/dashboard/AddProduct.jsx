@@ -72,7 +72,7 @@ const AddProduct = () => {
 
     try {
       await axios.post(
-        "https://toritorkari-server.vercel.app/product",
+        "https://toritorkari-server.onrender.com/product",
         product,
         {
           headers: {

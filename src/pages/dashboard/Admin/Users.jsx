@@ -17,7 +17,9 @@ const Users = () => {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get("https://toritorkari-server.vercel.app/user");
+      const res = await axios.get(
+        "https://toritorkari-server.onrender.com/user"
+      );
       setUsers(res.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -36,7 +38,7 @@ const Users = () => {
   const handleMakeAdmin = (userId) => {
     axios
       .patch(
-        `https://toritorkari-server.vercel.app/user/admin/${userId}`,
+        `https://toritorkari-server.onrender.com/user/admin/${userId}`,
         {},
         {
           headers: {
@@ -62,7 +64,7 @@ const Users = () => {
 
   const handleDeleteUser = (uid) => {
     axios
-      .delete(`https://toritorkari-server.vercel.app/user/${uid}`, {
+      .delete(`https://toritorkari-server.onrender.com/user/${uid}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

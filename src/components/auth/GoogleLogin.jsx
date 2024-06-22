@@ -22,7 +22,7 @@ const GoogleLogin = () => {
             photoURL: data?.photoURL,
           };
           axios
-            .post("https://toritorkari-server.vercel.app/user", userInfo, {
+            .post("https://toritorkari-server.onrender.com/user", userInfo, {
               headers: {
                 "Content-Type": "application/json",
               },

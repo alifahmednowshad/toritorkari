@@ -6,10 +6,10 @@ import "./ProductCarousel.css"; // Your custom CSS file
 
 const ProductCarousel = () => {
   const [products, setProducts] = useState([]);
-  console.log(products)
+  console.log(products);
 
   useEffect(() => {
-    fetch("https://toritorkari-server.vercel.app/product")
+    fetch("https://toritorkari-server.onrender.com/product")
       .then((res) => res.json())
       .then((data) => {
         const shuffled = data.sort(() => 0.5 - Math.random());

@@ -10,7 +10,7 @@ const useAdmin = (email) => {
       setIsAdminLoading(true);
       try {
         const response = await fetch(
-          `https://toritorkari-server.vercel.app/user/admin/${email}`
+          `https://toritorkari-server.onrender.com/user/admin/${email}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch admin status");

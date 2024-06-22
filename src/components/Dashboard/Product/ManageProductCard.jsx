@@ -11,7 +11,7 @@ const ManageProductCard = ({ product, onDelete }) => {
   const handleDelete = async () => {
     try {
       await axios.delete(
-        `https://toritorkari-server.vercel.app/product/${_id}`,
+        `https://toritorkari-server.onrender.com/product/${_id}`,
         {
           headers: {
             "Content-type": "application/json",

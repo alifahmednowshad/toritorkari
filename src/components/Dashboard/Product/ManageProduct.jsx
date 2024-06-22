@@ -5,7 +5,7 @@ const ManageProduct = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://toritorkari-server.vercel.app/product")
+    fetch("https://toritorkari-server.onrender.com/product")
       .then((res) => res.json())
       .then((data) => setProducts(data.reverse()));
   }, []);

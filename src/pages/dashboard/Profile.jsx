@@ -48,7 +48,7 @@ const Profile = () => {
 
     try {
       const response = await axios.patch(
-        `https://toritorkari-server.vercel.app/user/${user.email}`,
+        `https://toritorkari-server.onrender.com/user/${user.email}`,
         formData,
         {
           headers: {

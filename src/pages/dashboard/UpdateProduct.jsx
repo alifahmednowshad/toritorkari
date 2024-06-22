@@ -22,7 +22,7 @@ const UpdateProduct = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://toritorkari-server.vercel.app/product/${id}`
+          `https://toritorkari-server.onrender.com/product/${id}`
         );
         setProduct(response.data);
       } catch (error) {
@@ -93,7 +93,7 @@ const UpdateProduct = () => {
 
     try {
       await axios.patch(
-        `https://toritorkari-server.vercel.app/product/${product._id}`,
+        `https://toritorkari-server.onrender.com/product/${product._id}`,
         product,
         {
           headers: {
